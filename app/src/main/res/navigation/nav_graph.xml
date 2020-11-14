@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.alfred0ga.examenandroid.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_colaboradoresListaFragment"
+            app:destination="@id/colaboradoresListaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_agregarColaboradorFragment"
+            app:destination="@id/agregarColaboradorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarColaboradorFragment"
+        android:name="com.alfred0ga.examenandroid.ui.fragments.AgregarColaboradorFragment"
+        android:label="fragment_agregar_colaborador"
+        tools:layout="@layout/fragment_agregar_colaborador" />
+    <fragment
+        android:id="@+id/colaboradoresListaFragment"
+        android:name="com.alfred0ga.examenandroid.ui.fragments.ColaboradoresListaFragment"
+        android:label="fragment_colaboradores_lista"
+        tools:layout="@layout/fragment_colaboradores_lista" >
+        <action
+            android:id="@+id/action_colaboradoresListaFragment_to_colaboradoresMapaFragment"
+            app:destination="@id/colaboradoresMapaFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/colaboradoresMapaFragment"
+        android:name="com.alfred0ga.examenandroid.ui.fragments.ColaboradoresMapaFragment"
+        android:label="fragment_colaboradores_mapa"
+        tools:layout="@layout/fragment_colaboradores_mapa" />
+</navigation>

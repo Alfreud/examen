@@ -1,29 +1,20 @@
 package com.alfred0ga.examenandroid.ui.fragments
 
-import android.app.DownloadManager
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.alfred0ga.examenandroid.R
 import com.alfred0ga.examenandroid.models.DataAPI
-import com.alfred0ga.examenandroid.network.RetrofitInstance
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class HomeFragment: Fragment(R.layout.fragment_home) {
     private lateinit var myDataAPI: DataAPI
     var myDownloadId: Long = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -37,7 +28,7 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
             findNavController().navigate(action)
         }
 
-        val api = RetrofitInstance.api
+        /*val api = RetrofitInstance.api
 
         GlobalScope.launch(Dispatchers.IO) {
             val response = api.getDataFromAPI()
@@ -46,7 +37,7 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
                 Log.d("hello", myDataAPI.data.file)
 
                 var request = DownloadManager.Request(Uri.parse(myDataAPI.data.file.toString()))
-                    .setTitle("myDownload")
+                    .setTitle("myDownload.zip")
                     .setDescription("data from rest API")
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
                     .setAllowedOverMetered(true)
@@ -65,7 +56,22 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
 
                 activity?.registerReceiver(br, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
             }
-        }
+        }*/
 
+
+        /*var zipFileName= "hola"
+        val filename = uri.getLastPathSegment()
+
+        ProcessBuilder()
+            .command("unzip", zipFileName)
+            .redirectError(ProcessBuilder.Redirect.INHERIT)
+            .redirectOutput(ProcessBuilder.Redirect.INHERIT)
+            .start()
+            .waitFor()*/
+
+        //val filePath = Environment.DIRECTORY_DOWNLOADS
+        //val myFile = File("myDownload")
+
+        //ZipUtilities.unzipResource(filePath, myFile)
     }
 }

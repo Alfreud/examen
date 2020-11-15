@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.alfred0ga.examenandroid.ui.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_colaboradoresListaFragment"
             app:destination="@id/colaboradoresListaFragment"
@@ -28,13 +28,13 @@
     <fragment
         android:id="@+id/agregarColaboradorFragment"
         android:name="com.alfred0ga.examenandroid.ui.fragments.AgregarColaboradorFragment"
-        android:label="fragment_agregar_colaborador"
+        android:label="agregar"
         tools:layout="@layout/fragment_agregar_colaborador" />
     <fragment
         android:id="@+id/colaboradoresListaFragment"
         android:name="com.alfred0ga.examenandroid.ui.fragments.ColaboradoresListaFragment"
-        android:label="fragment_colaboradores_lista"
-        tools:layout="@layout/fragment_colaboradores_lista" >
+        android:label="colaboradores"
+        tools:layout="@layout/fragment_colaboradores_lista">
         <action
             android:id="@+id/action_colaboradoresListaFragment_to_colaboradoresMapaFragment"
             app:destination="@id/colaboradoresMapaFragment"

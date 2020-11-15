@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.alfred0ga.examenandroid.models.Converters
 import com.alfred0ga.examenandroid.models.Employee
 
 @Database(
     entities = [Employee::class],
     version = 1
 )
+@TypeConverters(Converters::class)
 abstract class EmployeesDatabase(): RoomDatabase() {
     abstract fun getEmployeeDAO(): DataDAO
 

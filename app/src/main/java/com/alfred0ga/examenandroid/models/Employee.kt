@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
 data class Employee(
     @PrimaryKey(autoGenerate = false)
     val id: String,
-    //val location: Location,
+    val location: Location,
     val mail: String,
     val name: String
 ) : Parcelable {

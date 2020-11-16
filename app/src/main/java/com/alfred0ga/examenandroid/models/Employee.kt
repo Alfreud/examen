@@ -1,6 +1,7 @@
 package com.alfred0ga.examenandroid.models
 
 import android.os.Parcelable
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
@@ -10,6 +11,7 @@ import kotlinx.android.parcel.Parcelize
 data class Employee(
     @PrimaryKey(autoGenerate = false)
     val id: String,
+    @Embedded
     val location: Location,
     val mail: String,
     val name: String
@@ -17,7 +19,7 @@ data class Employee(
 
     @Parcelize
     data class Location(
-        val lat: String,
-        val log: String
+        var lat: String,
+        var log: String
     ) : Parcelable
 }

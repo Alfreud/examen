@@ -10,8 +10,10 @@ import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.alfred0ga.examenandroid.models.DataAPI
+import com.alfred0ga.examenandroid.models.Employee
 import com.alfred0ga.examenandroid.repositories.DataRepository
 import kotlinx.coroutines.launch
 
@@ -22,6 +24,9 @@ class MainViewModel(
     private val context = getApplication<Application>().applicationContext
     private lateinit var myDataAPI: DataAPI
     var myDownloadId: Long = 0
+
+    val employees = dataRepository.getAllDataFromDB()
+    val employeesList = MutableLiveData<List<Employee>>()
 
     init {
         downloadFile()
@@ -51,7 +56,11 @@ class MainViewModel(
                 }
             }
 
-            context?.registerReceiver(br, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
+            context.registerReceiver(br, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         }
+    }
+
+    fun upsert(employee: Employee) = viewModelScope.launch {
+        dataRepository.upsert(employee)
     }
 }

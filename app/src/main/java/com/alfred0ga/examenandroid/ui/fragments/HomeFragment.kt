@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.alfred0ga.examenandroid.R
 import com.alfred0ga.examenandroid.models.DataAPI
+import com.alfred0ga.examenandroid.ui.MainViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment: Fragment(R.layout.fragment_home) {
+    private val viewModel: MainViewModel by activityViewModels()
     private lateinit var myDataAPI: DataAPI
     var myDownloadId: Long = 0
 

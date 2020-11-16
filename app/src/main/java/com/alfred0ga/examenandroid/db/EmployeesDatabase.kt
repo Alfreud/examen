@@ -4,16 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.alfred0ga.examenandroid.models.Converters
 import com.alfred0ga.examenandroid.models.Employee
 
 @Database(
     entities = [Employee::class],
     version = 1
 )
-@TypeConverters(Converters::class)
-abstract class EmployeesDatabase(): RoomDatabase() {
+abstract class EmployeesDatabase() : RoomDatabase() {
     abstract fun getEmployeeDAO(): DataDAO
 
     companion object {
@@ -21,8 +18,8 @@ abstract class EmployeesDatabase(): RoomDatabase() {
         private var instance: EmployeesDatabase? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance?: synchronized(LOCK) {
-            instance?: createDatabase(context).also { instance = it }
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: createDatabase(context).also { instance = it }
         }
 
         private fun createDatabase(context: Context) =

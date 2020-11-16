@@ -10,7 +10,8 @@ import com.alfred0ga.examenandroid.R
 import com.alfred0ga.examenandroid.models.Employee
 import kotlinx.android.synthetic.main.colaborador_item.view.*
 
-class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
+class EmployeeAdapter(private val listener: OnItemClickListener) :
+    RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.colaborador_item, parent, false)
@@ -43,5 +44,20 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
     val differ = AsyncListDiffer(this, diffCallback)
     fun submitList(list: List<Employee>) = differ.submitList(list)
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
 }

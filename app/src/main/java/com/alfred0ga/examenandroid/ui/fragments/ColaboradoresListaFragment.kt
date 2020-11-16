@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.alfred0ga.examenandroid.R
 import com.alfred0ga.examenandroid.adapters.EmployeeAdapter
 import com.alfred0ga.examenandroid.models.Employee
 import com.alfred0ga.examenandroid.ui.MainViewModel
 import kotlinx.android.synthetic.main.fragment_colaboradores_lista.*
 
-class ColaboradoresListaFragment : Fragment(R.layout.fragment_colaboradores_lista) {
+class ColaboradoresListaFragment : Fragment(R.layout.fragment_colaboradores_lista), EmployeeAdapter.OnItemClickListener {
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var employeeAdapter: EmployeeAdapter
 
@@ -27,7 +27,7 @@ class ColaboradoresListaFragment : Fragment(R.layout.fragment_colaboradores_list
     }
 
     fun setupRecyclerView() = recycler_view.apply{
-        employeeAdapter = EmployeeAdapter()
+        employeeAdapter = EmployeeAdapter(this@ColaboradoresListaFragment)
         adapter = employeeAdapter
     }
 
@@ -47,5 +47,10 @@ class ColaboradoresListaFragment : Fragment(R.layout.fragment_colaboradores_list
         val location4 = Employee.Location("19.3054457", "-99.2024085")
         val employee4 = Employee("198", location4, "jesusa@upaxer.com", "Jesus Alejandro Damian")
         viewModel.upsert(employee4)
+    }
+
+    override fun onItemClick(position: Int) {
+        val action = ColaboradoresListaFragmentDirections.actionColaboradoresListaFragmentToColaboradoresMapaFragment()
+        findNavController().navigate(action)
     }
 }

@@ -52,12 +52,15 @@ class EmployeeAdapter(private val listener: OnItemClickListener) :
         override fun onClick(p0: View?) {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                listener.onItemClick(position)
+                val item = differ.currentList[position]
+                if (item != null) {
+                    listener.onItemClick(item)
+                }
             }
         }
     }
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Employee)
     }
 }

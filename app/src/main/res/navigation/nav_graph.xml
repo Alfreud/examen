@@ -46,6 +46,9 @@
     <fragment
         android:id="@+id/colaboradoresMapaFragment"
         android:name="com.alfred0ga.examenandroid.ui.fragments.ColaboradoresMapaFragment"
-        android:label="fragment_colaboradores_mapa"
-        tools:layout="@layout/fragment_colaboradores_mapa" />
+        tools:layout="@layout/fragment_colaboradores_mapa">
+        <argument
+            android:name="employee"
+            app:argType="com.alfred0ga.examenandroid.models.Employee" />
+    </fragment>
 </navigation>

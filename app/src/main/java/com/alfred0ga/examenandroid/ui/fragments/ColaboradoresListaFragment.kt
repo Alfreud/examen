@@ -12,7 +12,7 @@ import com.alfred0ga.examenandroid.models.Employee
 import com.alfred0ga.examenandroid.ui.MainViewModel
 import kotlinx.android.synthetic.main.fragment_colaboradores_lista.*
 
-class ColaboradoresListaFragment : Fragment(R.layout.fragment_colaboradores_lista), EmployeeAdapter.OnItemClickListener {
+ class ColaboradoresListaFragment : Fragment(R.layout.fragment_colaboradores_lista), EmployeeAdapter.OnItemClickListener {
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var employeeAdapter: EmployeeAdapter
 
@@ -49,8 +49,8 @@ class ColaboradoresListaFragment : Fragment(R.layout.fragment_colaboradores_list
         viewModel.upsert(employee4)
     }
 
-    override fun onItemClick(position: Int) {
-        val action = ColaboradoresListaFragmentDirections.actionColaboradoresListaFragmentToColaboradoresMapaFragment()
-        findNavController().navigate(action)
-    }
-}
+     override fun onItemClick(position: Employee) {
+         val action = ColaboradoresListaFragmentDirections.actionColaboradoresListaFragmentToColaboradoresMapaFragment(position)
+         findNavController().navigate(action)
+     }
+ }
